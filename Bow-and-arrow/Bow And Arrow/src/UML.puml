@@ -1,0 +1,187 @@
+@startuml
+
+class Main
+{
+    +Start: Button
+    +How_to_play: Button
+    +Back: Button
+    +Level1: Button
+    +methods: Methods
+    +<u>player: Player
+    -arrows: ArrayList<Arrow>
+    -balloonArray: ArrayList<Balloon>
+    +<u>imgYellow: PImage
+    +<u>backgroundImage: PImage
+    +<u>backgroundImage2: PImage
+    +<u>imgRed: PImage
+    +<u>playerLoadedImage: PImage
+    +<u>playerNotLoadedImage: PImage
+    +<u>Hitler: PImage
+    +<u>abdo: PImage
+    +<u>credits: PImage
+    +Okay: Minim
+    +<u>okay: AudioPlayer
+    +Win: Minim
+    +<u>win: AudioPlayer
+    +Lose: Minim
+    +<u>lose: AudioPlayer
+    +BackGroundMusic: Minim
+    +<u>backgroundmusic: AudioPlayer
+    +CreditsOST: Minim
+    +<u>creditsOST: AudioPlayer
+    +<u>Game_State: int
+    +<u>Main_Menu:int
+    +<u>HowToPlay:int
+    +<u>Level_Selection:in
+    +<u>Level:int
+    +<u>Selected_Level: int
+    +<u>windowWidth: int
+    +<u>windowHeight: int
+    +<u>inGame: boolean
+    +<u>main(String[]): void
+    +settings(): void
+    +setup(): void
+    +draw(): void
+    +mousePressed(): void
+}
+
+class Methods
+ {
+    +p: PApplet
+    +Start: Button
+    +How_to_play: Button
+    +Back: Button
+    +Level1: Button
+    -<u>creditsPositionY: float
+    -<u>unlockedLevel2: boolean
+    +Methods :(PApplet p, Button s, Button h, Button b, Button l1)
+    +Setup_Window(ArrayList<Balloon>, ArrayList<Arrow>, Player): void
+    +Draw_Main_Menu(): void
+    +Back_Display(): void
+    +Draw_How_To_Play(): void
+    +Draw_Level_Selection(): void
+    +Draw_Level(ArrayList<Balloon>, ArrayList<Arrow>, Player): void
+    +level1(ArrayList<Balloon>, Player, ArrayList<Arrow>): void
+    +level2(PImage, ArrayList<Balloon>, ArrayList<Arrow>, Player): void
+    +fail(PImage): void
+    +<u>unlockLevel2(): void
+    +<u>isLevel2Unlocked(): boolean
+    +ShowText(String, int, int, float, float): void
+    +mousePressed(ArrayList<Balloon>, Player, ArrayList<Arrow>): void
+}
+
+class Player
+{
+    -sketch: PApplet
+    -image: PImage
+    -positionY: float
+    -positionX: float
+    -arrowCount: int
+    #noArrows: boolean
+    -loaded: boolean
+    +Player(PApplet, PImage, float, float, int)
+    +draw(): void
+    +update(): void
+    +checkMouseClick(ArrayList<Arrow>, Player): void
+    +getArrowCount(): int
+}
+
+class Score
+{
+    +<u>totalScore: int
+    +<u>scoreAdded: boolean
+    +<u>checkIfHit(ArrayList<Balloon>, ArrayList<Arrow>): void
+    +<u>addScore(): void
+    +<u>checkCoordinates(float, float, float): boolean
+}
+
+class Particle
+{
+    +<u>particles: ArrayList<Particle>
+    +x: float
+    +y: float
+    +speedX: float
+    +speedY: float
+    +gravity: float
+    +lifespan: int
+    sketch: PApplet
+    +red: int
+    +green: int
+    +blue: int
+    +Particle(PApplet, float, float, int, int, int)
+    +update(): void
+    +display(): void
+    +isDead(): boolean
+}
+
+class Arrow
+{
+    +sketch: PApplet
+    +arrowImage: PImage
+    +<u>isCharging: boolean
+    +x: float
+    +y: float
+    +speed: float
+    +isActive: boolean
+    +hitBoxY: float
+    +hitBoxX: float
+    +Arrow(PApplet, float, float, float)
+    +display(): void
+    +update(): void
+    +activate(): void
+    +isActive(): boolean
+}
+
+class Balloon
+ {
+    +positionX: int
+    +speed: float
+    +positionY: float
+    +img: PImage
+    +endHitBoxY: float
+    +endHitBoxX: int
+    +isRed: boolean
+    +acceleration: float
+    -<u>RAND:Random
+    +Balloon(int, int, int)
+    +<u>getBalloon(int, boolean, ArrayList<Balloon>): void
+    +<u>update(ArrayList<Balloon>): void
+}
+
+class Button
+{
+    +P: PApplet
+    -BUTTON_WIDTH: int
+    -BUTTON_HEIGHT: int
+    -Button_X: int
+    -Button_Y: int
+    +Set_Button_Width(int): void
+    +Get_Button_Width(): int
+    +Set_Button_Height(int): void
+    +Get_Button_Height(): int
+    +Set_Button_X(int): void
+    +Get_Button_X(): int
+    +Set_Button_Y(int): void
+    +Get_Button_Y(): int
+}
+
+Main -- Methods: methods
+Main -- Player: player
+Main -- Score: Score
+Main -- Arrow: Arrow
+Main -- Balloon: Balloon
+Main -- Button: Start
+Main -- Button: How_to_play
+Main -- Button: Back
+Main -- Button: Level1
+Player -- Arrow: checkMouseClick
+Player -- Arrow: Arrow
+Player -- Main: player
+Methods -- Balloon: update
+Methods -- Score: checkIfHit
+Methods -- Particle: Particle
+Arrow -- Particle: Arrow
+Score -- Main: totalScore
+Particle -- Main: sketch
+
+@enduml

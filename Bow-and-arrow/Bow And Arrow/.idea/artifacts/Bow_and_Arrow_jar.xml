@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Bow and Arrow:jar">
+    <output-path>$PROJECT_DIR$/../../..</output-path>
+    <root id="archive" name="Bow and Arrow.jar">
+      <element id="module-output" name="Bow and Arrow" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/Libararies/core.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/Libararies/minim.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/Libararies/jl1.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/Libararies/jsminim.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/Libararies/mp3spi1.9.5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/Libararies/tritonus_share.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
